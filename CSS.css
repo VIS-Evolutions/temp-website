@@ -1,5 +1,11 @@
 /* RESET */
 
+@font-face {
+    font-family: "futura";
+    src: url("Futura\ Bold.otf");
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -119,6 +125,7 @@ main {
     justify-content: center;
     padding-top:10%;
     font-size: 500%;
+    font-family: futura;
 }
 
 .buttons{

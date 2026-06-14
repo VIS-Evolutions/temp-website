@@ -142,6 +142,6 @@ main {
 
 #comingsoon{
     padding: 16vh;
-    max-width: fit-content;
+    max-width: 100vh;
 }
 

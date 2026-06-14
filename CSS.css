@@ -120,11 +120,11 @@ main {
 .temp-para{
     color: black;
     margin:auto;
-    width:50%;
+    width:50vh;
     display:flex;
     justify-content: center;
-    padding-top:10%;
-    font-size: 500%;
+    padding-top:10vh;
+    font-size: 500vh;
     font-family: futura;
 }
 
@@ -132,14 +132,15 @@ main {
     border: none;
     color: white;
     background-color: white;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-left: 2vh;
+    padding-right: 2vh;
 }
 
 .images{
-    height:65px;
+    height:5vh;
 }
 
 #comingsoon{
-    padding: 10%;
+    padding: 16vh;
 }
+

@@ -141,7 +141,11 @@ main {
 }
 
 #comingsoon{
-    padding: 16vh;
-    max-width: 100vh;
+    padding-top: 16vh;
+    padding-bottom: 16vh;
+    width:40%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 

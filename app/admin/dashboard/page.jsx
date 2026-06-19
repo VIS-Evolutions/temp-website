@@ -28,6 +28,9 @@ export default async function DashboardPage() {
           <p style={s("margin:8px 0 0;font-size:15px;color:#6F6B64")}>Signed in as {session.name || session.username}.</p>
         </div>
         <div style={s("display:flex;gap:12px;align-items:center")}>
+          <Link href="/admin/donation" style={s("background:transparent;border:1.5px solid #ECEAE4;cursor:pointer;font-family:'Chakra Petch',sans-serif;font-weight:600;font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:#1B1A16;padding:12px 18px;border-radius:8px")}>
+            Donation goal
+          </Link>
           <Link href="/admin/invite" style={s("background:transparent;border:1.5px solid #ECEAE4;cursor:pointer;font-family:'Chakra Petch',sans-serif;font-weight:600;font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:#1B1A16;padding:12px 18px;border-radius:8px")}>
             Invite team
           </Link>

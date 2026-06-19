@@ -57,14 +57,30 @@ create table if not exists public.admin_invites (
 );
 
 -- ---------------------------------------------------------------------------
+--  DONATION SETTINGS
+--  A single editable row holding the fundraising goal and amount raised,
+--  shown on the public Donate page and edited from the admin dashboard.
+-- ---------------------------------------------------------------------------
+create table if not exists public.donation_settings (
+  id            integer primary key default 1,
+  goal_amount   integer not null default 6000,
+  raised_amount integer not null default 3420,
+  updated_at    timestamptz not null default now(),
+  constraint donation_settings_single_row check (id = 1)
+);
+
+insert into public.donation_settings (id) values (1) on conflict (id) do nothing;
+
+-- ---------------------------------------------------------------------------
 --  Row Level Security
 --  The app talks to the database with the service-role key from the server
 --  only, which bypasses RLS. These policies are the safety net for anything
 --  using the public (anon) key.
 -- ---------------------------------------------------------------------------
-alter table public.admins         enable row level security;
-alter table public.news_posts     enable row level security;
-alter table public.admin_invites  enable row level security;
+alter table public.admins             enable row level security;
+alter table public.news_posts         enable row level security;
+alter table public.admin_invites      enable row level security;
+alter table public.donation_settings  enable row level security;
 
 -- admins / admin_invites: no policies => the anon key can read/write nothing.
 -- Only the server (service-role key) can touch these tables.
@@ -74,6 +90,12 @@ drop policy if exists "Public read published posts" on public.news_posts;
 create policy "Public read published posts"
   on public.news_posts for select
   using (published = true);
+
+-- donation_settings: anyone may READ; writes are server-only.
+drop policy if exists "Public read donation settings" on public.donation_settings;
+create policy "Public read donation settings"
+  on public.donation_settings for select
+  using (true);
 
 -- ---------------------------------------------------------------------------
 --  Storage bucket for post cover images

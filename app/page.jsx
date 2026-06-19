@@ -6,9 +6,7 @@ export default function HomePage() {
     <div style={s("animation:fadeIn .5s ease both")}>
 
       {/* HERO */}
-      <section style={s("position:relative;overflow:hidden;padding:96px 24px 84px;text-align:center")}>
-        <div style={s("position:absolute;top:-50px;right:-80px;width:460px;height:170px;background:linear-gradient(90deg,transparent,#D3A00B);opacity:.08;transform:skewX(-26deg);pointer-events:none")}></div>
-        <div style={s("position:absolute;bottom:10px;left:-90px;width:420px;height:150px;background:linear-gradient(90deg,#8A1416,transparent);opacity:.07;transform:skewX(-26deg);pointer-events:none")}></div>
+      <section style={s("padding:96px 24px 84px;text-align:center")}>
         <div style={s("position:relative;max-width:880px;margin:0 auto")}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logo.png" alt="VIS Evolutions" style={s("width:min(340px,62vw);height:auto;display:block;margin:0 auto;animation:logoIn 1.05s cubic-bezier(.2,.8,.2,1) both")} />

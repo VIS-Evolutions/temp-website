@@ -1,6 +1,9 @@
 import { s } from "@/lib/style";
-import { DONATION, fmtGBP } from "@/lib/site";
+import { fmtGBP } from "@/lib/site";
+import { getDonationSettings } from "@/lib/settings";
 import DonateForm from "@/components/DonateForm";
+
+export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "Donate · VIS Evolutions",
@@ -8,9 +11,8 @@ export const metadata = {
 
 const fundCard = "background:#fff;border:1px solid #ECEAE4;border-radius:12px;padding:26px";
 
-export default function DonatePage() {
-  const goal = DONATION.goalAmount;
-  const raised = DONATION.raisedAmount;
+export default async function DonatePage() {
+  const { goalAmount: goal, raisedAmount: raised } = await getDonationSettings();
   const pct = Math.max(0, Math.min(100, Math.round((raised / goal) * 100)));
 
   return (

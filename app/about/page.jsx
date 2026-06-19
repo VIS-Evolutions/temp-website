@@ -30,7 +30,7 @@ export default function AboutPage() {
 
       {/* MISSION */}
       <section style={s("max-width:1000px;margin:0 auto;padding:88px 24px 30px")}>
-        <div data-reveal style={s("display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:48px;align-items:start")}>
+        <div data-reveal style={s("display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:48px;align-items:start")}>
           <div>
             <p style={s("font-family:'Chakra Petch',sans-serif;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:#8A1416;font-weight:600;margin:0 0 8px")}>Our mission</p>
             <h2 style={s("font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:30px;color:#1B1A16;margin:0;letter-spacing:-.01em")}>Faster every iteration.</h2>
@@ -48,7 +48,7 @@ export default function AboutPage() {
           <h2 style={s("font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:clamp(24px,3.4vw,34px);color:#1B1A16;margin:0;letter-spacing:-.01em")}>What is F1 in Schools?</h2>
           <p style={s("margin:14px 0 0;font-size:16px;line-height:1.65;color:#6F6B64")}>The world&apos;s largest STEM competition — where teams run like a real F1 outfit, from the drawing board to the start line.</p>
         </div>
-        <div style={s("display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px")}>
+        <div style={s("display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:20px")}>
           <div data-reveal style={s("background:#fff;border:1px solid #ECEAE4;border-radius:12px;padding:30px")}>
             <div style={s("font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:15px;color:#8A1416;letter-spacing:.1em")}>01 / DESIGN</div>
             <p style={s("margin:14px 0 0;font-size:15px;line-height:1.65;color:#4a4843")}>Engineer a CO₂-powered car in CAD, then simulate its aerodynamics to cut drag before a single part is cut.</p>
@@ -71,7 +71,7 @@ export default function AboutPage() {
             <p style={s("font-family:'Chakra Petch',sans-serif;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:#8A1416;font-weight:600;margin:0")}>The team</p>
             <h2 style={s("font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:clamp(24px,3.4vw,36px);color:#1B1A16;margin:12px 0 0;letter-spacing:-.01em")}>Meet the six.</h2>
           </div>
-          <div style={s("display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px")}>
+          <div style={s("display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:24px")}>
             {team.map((m) => (
               <div key={m.name} data-reveal style={s("border:1px solid #ECEAE4;border-radius:12px;overflow:hidden;background:#FAFAF8")}>
                 <div style={s(photoBox)}>[ PHOTO ]</div>

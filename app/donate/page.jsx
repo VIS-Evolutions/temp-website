@@ -36,7 +36,7 @@ export default function DonatePage() {
 
       {/* WHAT IT FUNDS */}
       <section style={s("max-width:1080px;margin:0 auto;padding:72px 24px 30px")}>
-        <div data-reveal style={s("display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px")}>
+        <div data-reveal style={s("display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:20px")}>
           <div style={s(fundCard)}>
             <div style={s("font-family:'Chakra Petch',sans-serif;font-weight:700;color:#8A1416;font-size:15px;letter-spacing:.06em")}>MATERIALS</div>
             <p style={s("margin:10px 0 0;font-size:14px;line-height:1.6;color:#6F6B64")}>Model blocks, wheels and CO₂ cartridges for every test run.</p>

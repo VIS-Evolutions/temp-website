@@ -58,7 +58,7 @@ export default async function NewsPage() {
             <p style={s("margin:0;font-size:16px;line-height:1.6;color:#6F6B64")}>Check back soon — the team is busy building. Our first news posts will appear here.</p>
           </div>
         ) : (
-          <div style={s("display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:28px")}>
+          <div style={s("display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:28px")}>
             {posts.map((post) => (
               <Card key={post.id} post={post} />
             ))}

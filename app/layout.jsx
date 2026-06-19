@@ -4,6 +4,12 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import RevealController from "@/components/RevealController";
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 export const metadata = {
   title: "VIS Evolutions · F1 in Schools STEM Racing Team",
   description:

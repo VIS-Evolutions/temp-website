@@ -30,7 +30,7 @@ export default function InviteGenerator() {
           <label style={s(label)}>Label (optional)</label>
           <input name="label" placeholder="e.g. Team sign-up" style={s(field)} />
         </div>
-        <div style={s("display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px")}>
+        <div style={s("display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:18px")}>
           <div>
             <label style={s(label)}>Expires in (days)</label>
             <input name="expires" type="number" min="1" defaultValue="7" style={s(field)} />

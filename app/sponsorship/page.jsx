@@ -23,7 +23,7 @@ export default function SponsorshipPage() {
 
       {/* WHY SPONSOR */}
       <section style={s("max-width:1180px;margin:0 auto;padding:88px 24px 40px")}>
-        <div style={s("display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px")}>
+        <div style={s("display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:24px")}>
           <div data-reveal style={s("background:#fff;border:1px solid #ECEAE4;border-radius:12px;padding:32px")}>
             <div style={s("height:5px;width:54px;background:#8A1416;border-radius:3px;margin-bottom:18px")}></div>
             <h3 style={s("font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:20px;color:#1B1A16;margin:0 0 10px")}>Brand visibility</h3>
@@ -48,7 +48,7 @@ export default function SponsorshipPage() {
           <h2 style={s("font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:clamp(24px,3.4vw,36px);color:#1B1A16;margin:0;letter-spacing:-.01em")}>Partnership packages</h2>
           <p style={s("margin:12px 0 0;font-size:16px;color:#6F6B64;line-height:1.6")}>Flexible tiers — or we&apos;ll happily build something bespoke for your brand.</p>
         </div>
-        <div style={s("display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;align-items:stretch")}>
+        <div style={s("display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:20px;align-items:stretch")}>
           {/* Bronze */}
           <div data-reveal style={s("background:#fff;border:1px solid #ECEAE4;border-radius:14px;padding:30px 26px;display:flex;flex-direction:column")}>
             <div style={s("font-family:'Chakra Petch',sans-serif;font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:14px;color:#6F6B64")}>Bronze</div>
@@ -100,8 +100,8 @@ export default function SponsorshipPage() {
 
       {/* LOGO ON CAR */}
       <section style={s("max-width:1180px;margin:0 auto;padding:60px 24px")}>
-        <div data-reveal style={s("background:#fff;border:1px solid #ECEAE4;border-radius:16px;overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))")}>
-          <div style={s("aspect-ratio:16/10;min-height:240px;background:repeating-linear-gradient(135deg,#F2F0EB,#F2F0EB 11px,#EBE8E2 11px,#EBE8E2 22px);display:flex;align-items:center;justify-content:center;color:#A29C92;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;text-align:center;padding:20px")}>[ Car livery — your logo here ]</div>
+        <div data-reveal style={s("background:#fff;border:1px solid #ECEAE4;border-radius:16px;overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))")}>
+          <div style={s("width:100%;aspect-ratio:16/10;min-height:240px;background:repeating-linear-gradient(135deg,#F2F0EB,#F2F0EB 11px,#EBE8E2 11px,#EBE8E2 22px);display:flex;align-items:center;justify-content:center;color:#A29C92;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;text-align:center;padding:20px")}>[ Car livery — your logo here ]</div>
           <div style={s("padding:48px 40px;display:flex;flex-direction:column;justify-content:center")}>
             <h2 style={s("font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:28px;color:#1B1A16;margin:0 0 14px;letter-spacing:-.01em")}>See your logo cross the line.</h2>
             <p style={s("margin:0 0 24px;font-size:16px;line-height:1.7;color:#6F6B64")}>Sponsor placements appear on the car body, our display stand and team kit — photographed and shared at every event we attend.</p>

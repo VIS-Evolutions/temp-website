@@ -7,7 +7,7 @@ const footerLink =
 export default function Footer() {
   return (
     <footer style={s("background:#1B1A16;color:#C9C5BD")}>
-      <div style={s("max-width:1180px;margin:0 auto;padding:64px 24px 30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px")}>
+      <div style={s("max-width:1180px;margin:0 auto;padding:64px 24px 30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:40px")}>
         <div>
           <div style={s("font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:34px;line-height:1;letter-spacing:.02em")}>
             <span style={s("color:#8A1416")}>V</span>

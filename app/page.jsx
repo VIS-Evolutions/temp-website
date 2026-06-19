@@ -26,16 +26,16 @@ export default function HomePage() {
       {/* STATS STRIP */}
       <section style={s("border-top:1px solid #ECEAE4;border-bottom:1px solid #ECEAE4;background:#fff")}>
         <div style={s("max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr)")}>
-          <div data-reveal style={s("padding:34px 24px;text-align:center;border-right:1px solid #ECEAE4")}>
-            <div style={s("font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:40px;color:#8A1416;line-height:1")}>06</div>
+          <div data-reveal style={s("padding:34px clamp(10px,4vw,24px);text-align:center;border-right:1px solid #ECEAE4")}>
+            <div style={s("font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:clamp(26px,7vw,40px);color:#8A1416;line-height:1")}>06</div>
             <div style={s("margin-top:6px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#6F6B64;font-family:'Chakra Petch',sans-serif")}>Student engineers</div>
           </div>
-          <div data-reveal style={s("padding:34px 24px;text-align:center;border-right:1px solid #ECEAE4")}>
-            <div style={s("font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:40px;color:#D3A00B;line-height:1")}>20m</div>
+          <div data-reveal style={s("padding:34px clamp(10px,4vw,24px);text-align:center;border-right:1px solid #ECEAE4")}>
+            <div style={s("font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:clamp(26px,7vw,40px);color:#D3A00B;line-height:1")}>20m</div>
             <div style={s("margin-top:6px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#6F6B64;font-family:'Chakra Petch',sans-serif")}>Sprint race track</div>
           </div>
-          <div data-reveal style={s("padding:34px 24px;text-align:center")}>
-            <div style={s("font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:40px;color:#1B1A16;line-height:1")}>&lt;1.0s</div>
+          <div data-reveal style={s("padding:34px clamp(10px,4vw,24px);text-align:center")}>
+            <div style={s("font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:clamp(26px,7vw,40px);color:#1B1A16;line-height:1")}>&lt;1.0s</div>
             <div style={s("margin-top:6px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#6F6B64;font-family:'Chakra Petch',sans-serif")}>Target run time</div>
           </div>
         </div>
@@ -47,7 +47,7 @@ export default function HomePage() {
           <p style={s("font-family:'Chakra Petch',sans-serif;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:#8A1416;font-weight:600;margin:0")}>What V·I·S stands for</p>
           <h2 style={s("font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:clamp(26px,4vw,40px);color:#1B1A16;margin:12px 0 0;letter-spacing:-.01em")}>Our journey, in three letters.</h2>
         </div>
-        <div style={s("display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px")}>
+        <div style={s("display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:24px")}>
           <div data-reveal style={s("position:relative;background:#fff;border:1px solid #ECEAE4;border-radius:12px;padding:34px 30px 36px;overflow:hidden")}>
             <div style={s("height:5px;width:64px;background:#8A1416;border-radius:3px")}></div>
             <div style={s("font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:96px;line-height:.9;color:#8A1416;transform:skewX(-7deg);margin:14px 0 4px")}>V</div>
@@ -71,7 +71,7 @@ export default function HomePage() {
 
       {/* BUILD TEASER */}
       <section style={s("background:#fff;border-top:1px solid #ECEAE4;border-bottom:1px solid #ECEAE4")}>
-        <div style={s("max-width:1180px;margin:0 auto;padding:88px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:48px;align-items:center")}>
+        <div style={s("max-width:1180px;margin:0 auto;padding:88px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:48px;align-items:center")}>
           <div data-reveal>
             <p style={s("font-family:'Chakra Petch',sans-serif;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:#8A1416;font-weight:600;margin:0")}>The build</p>
             <h2 style={s("font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:clamp(24px,3.4vw,36px);color:#1B1A16;margin:12px 0 16px;letter-spacing:-.01em")}>A car carved from CAD, wind tunnels and late nights.</h2>

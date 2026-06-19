@@ -1,0 +1,151 @@
+/* RESET */
+
+@font-face {
+    font-family: "futura";
+    src: url("Futura\ Regular.ttf");
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+}
+
+/* NAVIGATION BAR */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75px;
+
+    background-color: white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 30px;
+
+    z-index: 1000;
+
+    border-bottom: 1px solid #e5e5e5;
+}
+
+/* LOGO */
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+}
+
+.brand-name {
+    margin-left: 12px;
+
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 2px;
+
+    color: #830001ff;
+}
+
+/* NAVIGATION LINKS */
+
+.nav-links {
+    list-style: none;
+
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.nav-links a {
+    position: relative;
+
+    text-decoration: none;
+    color: black;
+
+    font-size: 18px;
+    font-weight: 500;
+
+    transition: color 0.18s ease-in-out;
+}
+
+/* HOVER EFFECT */
+
+.nav-links a:hover {
+    color: #830001ff;
+}
+
+/* ACTIVE PAGE GOLD BAR */
+
+.nav-links a.active::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: -12px;
+
+    width: 100%;
+    height: 4px;
+
+    background-color: #cf9e04ff;
+}
+
+/* PAGE CONTENT SPACING */
+
+main {
+    padding-top: 90px;
+}
+
+.temp-logo{
+    display:flex;
+    justify-content: center;
+}
+
+.temp-para{
+    color: black;
+    margin:auto;
+    width:50vh;
+    display:flex;
+    justify-content: center;
+    padding-top:10vh;
+    font-size: 500vh;
+    font-family: futura;
+}
+
+.buttons{
+    border: none;
+    color: white;
+    background-color: white;
+    padding-left: 2vh;
+    padding-right: 2vh;
+}
+
+.images{
+    height:5vh;
+}
+
+#comingsoon{
+    padding-top: 16vh;
+    padding-bottom: 16vh;
+    width:40%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+

@@ -6,6 +6,7 @@
 *.pem
 npm-debug.log*
 .env*.local
+.env.local
 .vercel
 extracted
 VIS Evolutions.html

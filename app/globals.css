@@ -10,10 +10,42 @@ img { max-width: 100%; }
 .vis-burger { display: none; }
 .vis-mobile-menu { display: none; }
 
+/* Animated hamburger -> X icon */
+.vis-burger-box { position: relative; width: 24px; height: 16px; display: inline-block; }
+.vis-burger-box span {
+  position: absolute; left: 0; width: 100%; height: 2.2px; border-radius: 2px; background: #1B1A16;
+  transition: transform .3s cubic-bezier(.2,.7,.2,1), opacity .2s ease, top .3s cubic-bezier(.2,.7,.2,1);
+}
+.vis-burger-box span:nth-child(1) { top: 0; }
+.vis-burger-box span:nth-child(2) { top: 7px; }
+.vis-burger-box span:nth-child(3) { top: 14px; }
+.vis-burger.open .vis-burger-box span:nth-child(1) { top: 7px; transform: rotate(45deg); }
+.vis-burger.open .vis-burger-box span:nth-child(2) { opacity: 0; transform: translateX(-8px); }
+.vis-burger.open .vis-burger-box span:nth-child(3) { top: 7px; transform: rotate(-45deg); }
+
+/* Mobile dropdown menu — slides + fades in */
 @media (max-width: 860px) {
   .vis-nav-desktop { display: none; }
   .vis-burger { display: inline-flex; }
-  .vis-mobile-menu.open { display: block; }
+  .vis-mobile-menu {
+    display: block;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    z-index: 40;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    box-shadow: 0 16px 30px rgba(27, 26, 22, .10);
+    transition: opacity .26s ease, transform .3s cubic-bezier(.2,.7,.2,1), visibility 0s linear .3s;
+  }
+  .vis-mobile-menu.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: opacity .26s ease, transform .3s cubic-bezier(.2,.7,.2,1), visibility 0s;
+  }
+  /* Each item eases in just after the panel */
+  .vis-mobile-menu a { transition: color .2s ease, background-color .2s ease; }
 }
 
 @keyframes logoIn { 0% { opacity: 0; transform: translateY(26px) scale(.93); } 100% { opacity: 1; transform: none; } }
@@ -21,3 +53,12 @@ img { max-width: 100%; }
 @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
 @keyframes drawLine { 0% { width: 0; opacity: 0; } 100% { width: 210px; opacity: 1; } }
 @keyframes pulseGlow { 0%, 100% { opacity: .6; } 50% { opacity: 1; } }
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+}

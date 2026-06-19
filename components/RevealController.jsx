@@ -11,9 +11,13 @@ export default function RevealController({ revealOnScroll = true }) {
 
   useEffect(() => {
     let io = null;
+    const prefersReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const raf = requestAnimationFrame(() => {
       const els = Array.from(document.querySelectorAll("[data-reveal]"));
-      if (!revealOnScroll) {
+      if (!revealOnScroll || prefersReduced) {
         els.forEach((e) => {
           e.style.opacity = "1";
           e.style.transform = "none";

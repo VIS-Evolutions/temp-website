@@ -38,7 +38,18 @@ export default function Footer() {
       </div>
       <div style={s("border-top:1px solid #2d2a25;max-width:1180px;margin:0 auto;padding:22px 24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px")}>
         <span style={s("font-size:13px;color:#6f6b63")}>© 2026 VIS Evolutions · F1 in Schools STEM Racing Team</span>
-        <span style={s("font-size:13px;color:#6f6b63;font-family:'Space Mono',monospace")}>Built by the team</span>
+        <span style={s("font-size:13px;color:#6f6b63;font-family:'Space Mono',monospace")}>
+          Designed &amp; built by Internet Studio ·{" "}
+          <Btn
+            href="https://internetstudio.co.uk"
+            target="_blank"
+            rel="noopener noreferrer"
+            base="color:#D3A00B;font-family:'Space Mono',monospace;font-size:13px;text-decoration:underline;text-underline-offset:3px"
+            hover="color:#e6b115"
+          >
+            internetstudio.co.uk
+          </Btn>
+        </span>
       </div>
     </footer>
   );

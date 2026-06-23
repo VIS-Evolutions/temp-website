@@ -1,21 +1,17 @@
 import { s } from "@/lib/style";
+import { getTeamMembers } from "@/lib/team";
+
+export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "About Us · VIS Evolutions",
 };
 
-const team = [
-  { name: "Aarav S.", role: "Team Principal" },
-  { name: "Maya L.", role: "Design Engineer" },
-  { name: "Ethan R.", role: "Manufacturing Lead" },
-  { name: "Priya K.", role: "Aerodynamicist" },
-  { name: "Leo M.", role: "Marketing & Sponsorship" },
-  { name: "Sofia D.", role: "Resources & Finance" },
-];
+const photoBox = "width:100%;height:100%;aspect-ratio:1/1;background:repeating-linear-gradient(135deg,#F2F0EB,#F2F0EB 11px,#EBE8E2 11px,#EBE8E2 22px);display:flex;align-items:center;justify-content:center;color:#A29C92;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em";
 
-const photoBox = "aspect-ratio:1/1;background:repeating-linear-gradient(135deg,#F2F0EB,#F2F0EB 11px,#EBE8E2 11px,#EBE8E2 22px);display:flex;align-items:center;justify-content:center;color:#A29C92;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em";
+export default async function AboutPage() {
+  const team = await getTeamMembers();
 
-export default function AboutPage() {
   return (
     <div style={s("animation:fadeIn .5s ease both")}>
 
@@ -69,12 +65,19 @@ export default function AboutPage() {
         <div style={s("max-width:1180px;margin:0 auto;padding:84px 24px")}>
           <div data-reveal style={s("text-align:center;margin:0 auto 48px;max-width:560px")}>
             <p style={s("font-family:'Chakra Petch',sans-serif;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:#8A1416;font-weight:600;margin:0")}>The team</p>
-            <h2 style={s("font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:clamp(24px,3.4vw,36px);color:#1B1A16;margin:12px 0 0;letter-spacing:-.01em")}>Meet the six.</h2>
+            <h2 style={s("font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:clamp(24px,3.4vw,36px);color:#1B1A16;margin:12px 0 0;letter-spacing:-.01em")}>Meet the team.</h2>
           </div>
-          <div style={s("display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:24px")}>
+          <div style={s("display:flex;flex-wrap:wrap;justify-content:center;gap:24px")}>
             {team.map((m) => (
-              <div key={m.name} data-reveal style={s("border:1px solid #ECEAE4;border-radius:12px;overflow:hidden;background:#FAFAF8")}>
-                <div style={s(photoBox)}>[ PHOTO ]</div>
+              <div key={m.id || m.name} data-reveal style={s("width:260px;max-width:100%;border:1px solid #ECEAE4;border-radius:12px;overflow:hidden;background:#FAFAF8")}>
+                <div style={s("aspect-ratio:1/1;overflow:hidden")}>
+                  {m.photo_url ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={m.photo_url} alt={m.name} style={s("width:100%;height:100%;object-fit:cover;display:block")} />
+                  ) : (
+                    <div style={s(photoBox)}>[ PHOTO ]</div>
+                  )}
+                </div>
                 <div style={s("padding:20px 22px")}>
                   <div style={s("font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:19px;color:#1B1A16")}>{m.name}</div>
                   <div style={s("font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#8A1416;font-family:'Chakra Petch',sans-serif;margin-top:4px")}>{m.role}</div>

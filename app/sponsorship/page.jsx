@@ -1,5 +1,8 @@
 import { s } from "@/lib/style";
 import Btn from "@/components/Btn";
+import { getSponsors } from "@/lib/sponsors";
+
+export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "Sponsorship · VIS Evolutions",
@@ -8,7 +11,31 @@ export const metadata = {
 const li = "font-size:14px;color:#4a4843;line-height:1.5;display:flex;gap:9px";
 const liDark = "font-size:14px;color:#C9C5BD;line-height:1.5;display:flex;gap:9px";
 
-export default function SponsorshipPage() {
+function SponsorLogo({ sponsor }) {
+  const inner = (
+    <>
+      <div style={s("height:64px;display:flex;align-items:center;justify-content:center")}>
+        {sponsor.logo_url ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={sponsor.logo_url} alt={sponsor.name} style={s("max-width:100%;max-height:64px;object-fit:contain;display:block")} />
+        ) : (
+          <span style={s("font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:20px;color:#1B1A16;text-align:center")}>{sponsor.name}</span>
+        )}
+      </div>
+      <div style={s("margin-top:14px;font-family:'Chakra Petch',sans-serif;font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#6F6B64;text-align:center")}>{sponsor.name}</div>
+    </>
+  );
+  const card = "width:230px;max-width:100%;background:#fff;border:1px solid #ECEAE4;border-radius:14px;padding:28px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center";
+  return sponsor.website ? (
+    <a href={sponsor.website} target="_blank" rel="noopener noreferrer" data-reveal style={s(card)}>{inner}</a>
+  ) : (
+    <div data-reveal style={s(card)}>{inner}</div>
+  );
+}
+
+export default async function SponsorshipPage() {
+  const sponsors = await getSponsors();
+
   return (
     <div style={s("animation:fadeIn .5s ease both")}>
 
@@ -41,6 +68,18 @@ export default function SponsorshipPage() {
           </div>
         </div>
       </section>
+
+      {/* CURRENT SPONSORS */}
+      {sponsors.length > 0 && (
+        <section style={s("max-width:1180px;margin:0 auto;padding:50px 24px 10px")}>
+          <p data-reveal style={s("font-family:'Chakra Petch',sans-serif;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:#8A1416;font-weight:600;margin:0 0 28px;text-align:center")}>Proudly backed by</p>
+          <div style={s("display:flex;flex-wrap:wrap;justify-content:center;gap:20px")}>
+            {sponsors.map((sp) => (
+              <SponsorLogo key={sp.id} sponsor={sp} />
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* TIERS */}
       <section style={s("max-width:1180px;margin:0 auto;padding:50px 24px 30px")}>

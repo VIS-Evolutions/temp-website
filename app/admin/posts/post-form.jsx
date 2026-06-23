@@ -1,8 +1,9 @@
 "use client";
 
-import { useActionState } from "react";
+import { useRef, useState, useTransition } from "react";
 import Link from "next/link";
 import { s } from "@/lib/style";
+import { uploadCoverImage } from "@/lib/uploadCoverImage";
 
 const field =
   "width:100%;padding:13px 15px;border:1.5px solid #ECEAE4;border-radius:10px;font-family:'Public Sans',sans-serif;font-size:16px;color:#1B1A16;outline:none;background:#FAFAF8";
@@ -10,13 +11,65 @@ const label =
   "display:block;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#6F6B64;margin-bottom:7px;font-family:'Chakra Petch',sans-serif";
 
 export default function PostForm({ action, post, submitLabel = "Publish post" }) {
-  const [state, formAction, pending] = useActionState(action, { error: null });
   const isEdit = !!post;
+  const fileRef = useRef(null);
+  const [error, setError] = useState(null);
+  const [status, setStatus] = useState("");
+  const [pending, startTransition] = useTransition();
+  // The image currently attached to the post (existing one, or "" if removed).
+  const [imageUrl, setImageUrl] = useState(post?.image_url || "");
+  // Local preview for a freshly picked (not-yet-uploaded) file.
+  const [localPreview, setLocalPreview] = useState("");
+
+  const busy = pending || !!status;
+  const previewSrc = localPreview || imageUrl;
+
+  function onPickFile(e) {
+    const f = e.target.files?.[0];
+    setError(null);
+    if (f) setLocalPreview(URL.createObjectURL(f));
+  }
+
+  function removeImage() {
+    setImageUrl("");
+    setLocalPreview("");
+    if (fileRef.current) fileRef.current.value = "";
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setError(null);
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    fd.delete("image"); // never send the raw file through the server action
+
+    const file = fileRef.current?.files?.[0];
+    let finalUrl = imageUrl;
+
+    try {
+      if (file && file.size) {
+        if (!file.type.startsWith("image/")) throw new Error("Please choose an image file (JPG, PNG or WebP).");
+        finalUrl = await uploadCoverImage(file, setStatus);
+      }
+    } catch (err) {
+      setStatus("");
+      setError(err.message || "Image upload failed.");
+      return;
+    }
+
+    fd.set("image_url", finalUrl || "");
+    setStatus("Saving…");
+    startTransition(async () => {
+      const res = await action(null, fd);
+      // On success the action redirects; we only get here on error.
+      if (res?.error) setError(res.error);
+      setStatus("");
+    });
+  }
 
   return (
-    <form action={formAction} style={s("display:flex;flex-direction:column;gap:20px")}>
+    <form onSubmit={handleSubmit} style={s("display:flex;flex-direction:column;gap:20px")}>
       {isEdit && <input type="hidden" name="id" defaultValue={post.id} />}
-      {isEdit && <input type="hidden" name="existing_image" defaultValue={post.image_url || ""} />}
 
       <div>
         <label style={s(label)}>Headline</label>
@@ -30,13 +83,20 @@ export default function PostForm({ action, post, submitLabel = "Publish post" })
 
       <div>
         <label style={s(label)}>Cover image</label>
-        {post?.image_url && (
+        {previewSrc && (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={post.image_url} alt="" style={s("width:100%;max-width:320px;border-radius:10px;border:1px solid #ECEAE4;margin-bottom:10px;display:block")} />
+          <img src={previewSrc} alt="" style={s("width:100%;max-width:320px;border-radius:10px;border:1px solid #ECEAE4;margin-bottom:10px;display:block")} />
         )}
-        <input name="image" type="file" accept="image/*" style={s("font-family:'Public Sans',sans-serif;font-size:14px;color:#4a4843")} />
+        <div style={s("display:flex;gap:12px;align-items:center;flex-wrap:wrap")}>
+          <input ref={fileRef} name="image" type="file" accept="image/*" onChange={onPickFile} style={s("font-family:'Public Sans',sans-serif;font-size:14px;color:#4a4843")} />
+          {previewSrc && (
+            <button type="button" onClick={removeImage} style={s("background:none;border:none;cursor:pointer;font-family:'Chakra Petch',sans-serif;font-weight:600;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:#A29C92;padding:4px")}>
+              Remove
+            </button>
+          )}
+        </div>
         <p style={s("margin:8px 0 0;font-size:13px;color:#A29C92")}>
-          {isEdit ? "Leave empty to keep the current image." : "Optional. JPG, PNG or WebP."}
+          Photos are automatically optimised before upload. JPG, PNG or WebP.
         </p>
       </div>
 
@@ -50,20 +110,18 @@ export default function PostForm({ action, post, submitLabel = "Publish post" })
         Published (visible on the public news page)
       </label>
 
-      {state?.error && (
-        <p style={s("margin:0;font-size:14px;color:#8A1416;font-weight:600")}>{state.error}</p>
-      )}
+      {error && <p style={s("margin:0;font-size:14px;color:#8A1416;font-weight:600")}>{error}</p>}
 
       <div style={s("display:flex;gap:12px;align-items:center;flex-wrap:wrap")}>
         <button
           type="submit"
-          disabled={pending}
+          disabled={busy}
           style={s(
             "background:#8A1416;border:none;cursor:pointer;font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:15px;letter-spacing:.04em;text-transform:uppercase;color:#fff;padding:14px 28px;border-radius:10px" +
-              (pending ? ";opacity:.6" : "")
+              (busy ? ";opacity:.6" : "")
           )}
         >
-          {pending ? "Saving…" : submitLabel}
+          {status || submitLabel}
         </button>
         <Link href="/admin/dashboard" style={s("font-family:'Chakra Petch',sans-serif;font-weight:600;font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:#6F6B64;padding:14px 4px")}>
           Cancel

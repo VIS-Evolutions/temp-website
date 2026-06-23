@@ -23,6 +23,9 @@ cp .env.local.example .env.local
 - `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` — Supabase dashboard →
   **Project Settings → API**. Use the **service_role** key. It is only ever used
   server-side and must never be committed or shipped to the browser.
+- `NEXT_PUBLIC_SUPABASE_URL` (same URL) and `NEXT_PUBLIC_SUPABASE_ANON_KEY` —
+  the **anon/public** key from the same page. These are browser-safe and power
+  the direct, compressed image uploads when posting news.
 - `AUTH_SECRET` — any long random string. Generate one with:
   ```bash
   openssl rand -base64 32

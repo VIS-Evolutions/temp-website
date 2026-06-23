@@ -26,7 +26,7 @@ function Card({ post }) {
       </div>
       <div style={s("padding:26px 28px 30px;display:flex;flex-direction:column;flex:1")}>
         <div style={s("font-family:'Chakra Petch',sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8A1416;font-weight:600")}>
-          {formatDate(post.created_at)} · {post.author_name || "VIS Evolutions"}
+          {formatDate(post.created_at)} · VIS Evolutions
         </div>
         <h2 style={s("font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:24px;line-height:1.18;color:#1B1A16;margin:12px 0 0;letter-spacing:-.01em")}>{post.title}</h2>
         {post.excerpt && (

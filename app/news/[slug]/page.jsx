@@ -27,7 +27,7 @@ export default async function NewsPostPage({ params }) {
         <Link href="/news" style={s("font-family:'Chakra Petch',sans-serif;font-weight:600;font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:#8A1416")}>‹ All news</Link>
 
         <p style={s("margin:34px 0 0;font-family:'Chakra Petch',sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#8A1416;font-weight:600")}>
-          {formatDate(post.created_at)} · {post.author_name || "VIS Evolutions"}
+          {formatDate(post.created_at)} · VIS Evolutions
         </p>
         <h1 style={s("font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:clamp(28px,4.5vw,44px);line-height:1.1;color:#1B1A16;margin:12px 0 0;letter-spacing:-.01em")}>{post.title}</h1>
 

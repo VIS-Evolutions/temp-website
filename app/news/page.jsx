@@ -2,12 +2,21 @@ import Link from "next/link";
 import { s } from "@/lib/style";
 import { formatDate } from "@/lib/site";
 import { getPublishedPosts } from "@/lib/posts";
+import { SITE } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "News · VIS Evolutions",
-  description: "The latest updates from the VIS Evolutions STEM racing team.",
+  title: "News & Updates | VIS Evolutions STEM Racing",
+  description:
+    "Build logs, race updates and milestones from VIS Evolutions — our F1 in Schools STEM racing team designing and racing a miniature Formula 1 car.",
+  alternates: { canonical: "/news" },
+  openGraph: {
+    title: "News & Updates | VIS Evolutions STEM Racing",
+    description: "Build logs, race updates and milestones from VIS Evolutions.",
+    url: "/news",
+    images: [SITE.ogImage],
+  },
 };
 
 const stripe =

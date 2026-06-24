@@ -3,16 +3,27 @@ import { notFound } from "next/navigation";
 import { s } from "@/lib/style";
 import { formatDate } from "@/lib/site";
 import { getPostBySlug } from "@/lib/posts";
+import { SITE } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
-  if (!post) return { title: "News · VIS Evolutions" };
+  if (!post) return { title: "News & Updates | VIS Evolutions" };
   return {
-    title: `${post.title} · VIS Evolutions`,
-    description: post.excerpt || undefined,
+    title: `${post.title} | VIS Evolutions News`,
+    description: post.excerpt || SITE.description,
+    alternates: { canonical: `/news/${post.slug}` },
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.excerpt || undefined,
+      url: `/news/${post.slug}`,
+      images: [post.image_url || SITE.ogImage],
+      publishedTime: post.created_at,
+      modifiedTime: post.updated_at || post.created_at,
+    },
   };
 }
 

@@ -1,11 +1,21 @@
 import { s } from "@/lib/style";
 import Btn from "@/components/Btn";
 import { getSponsors } from "@/lib/sponsors";
+import { SITE } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Sponsorship · VIS Evolutions",
+  title: "Sponsor VIS Evolutions | F1 in Schools STEM Racing",
+  description:
+    "Partner with VIS Evolutions, a student F1 in Schools STEM racing team. Put your brand on our car, our race suits and our channels — and back the next generation of engineers.",
+  alternates: { canonical: "/sponsorship" },
+  openGraph: {
+    title: "Sponsor VIS Evolutions | F1 in Schools STEM Racing",
+    description: "Partner with VIS Evolutions and put your brand on our F1 in Schools car.",
+    url: "/sponsorship",
+    images: [SITE.ogImage],
+  },
 };
 
 const li = "font-size:14px;color:#4a4843;line-height:1.5;display:flex;gap:9px";

@@ -9,7 +9,7 @@ export default function HomePage() {
       <section style={s("padding:96px 24px 84px;text-align:center")}>
         <div style={s("position:relative;max-width:880px;margin:0 auto")}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.png" alt="VIS Evolutions" style={s("width:min(340px,62vw);height:auto;display:block;margin:0 auto;animation:logoIn 1.05s cubic-bezier(.2,.8,.2,1) both")} />
+          <img src="/logo.png" alt="VIS Evolutions — F1 in Schools STEM Racing Team logo" style={s("width:min(340px,62vw);height:auto;display:block;margin:0 auto;animation:logoIn 1.05s cubic-bezier(.2,.8,.2,1) both")} />
           <div style={s("height:4px;background:#1B1A16;border-radius:3px;margin:18px auto 0;animation:drawLine 1s cubic-bezier(.2,.8,.2,1) .5s both")}></div>
           <p style={s("margin:30px auto 0;font-family:'Chakra Petch',sans-serif;font-size:13px;letter-spacing:.34em;text-transform:uppercase;color:#8A1416;font-weight:600;animation:fadeUp .8s ease .55s both")}>F1 in Schools · STEM Racing Team</p>
           <h1 style={s("margin:14px auto 0;font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:clamp(30px,5vw,52px);line-height:1.08;letter-spacing:-.01em;color:#1B1A16;max-width:14ch;animation:fadeUp .8s ease .7s both")}>Engineering the fastest model car on the track.</h1>

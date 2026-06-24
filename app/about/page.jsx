@@ -1,10 +1,20 @@
 import { s } from "@/lib/style";
 import { getTeamMembers } from "@/lib/team";
+import { SITE } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "About Us · VIS Evolutions",
+  title: "About VIS Evolutions | F1 in Schools STEM Racing Team",
+  description:
+    "Meet VIS Evolutions (Vision · Improvement · Success) — a six-student F1 in Schools STEM racing team designing, building and racing a miniature Formula 1 car.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About VIS Evolutions | F1 in Schools STEM Racing Team",
+    description: "Meet VIS Evolutions — a student F1 in Schools STEM racing team building a miniature Formula 1 car.",
+    url: "/about",
+    images: [SITE.ogImage],
+  },
 };
 
 const photoBox = "width:100%;height:100%;aspect-ratio:1/1;background:repeating-linear-gradient(135deg,#F2F0EB,#F2F0EB 11px,#EBE8E2 11px,#EBE8E2 22px);display:flex;align-items:center;justify-content:center;color:#A29C92;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em";

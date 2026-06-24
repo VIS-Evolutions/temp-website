@@ -1,12 +1,22 @@
 import { s } from "@/lib/style";
 import { fmtGBP } from "@/lib/site";
 import { getDonationSettings } from "@/lib/settings";
+import { SITE } from "@/lib/seo";
 import DonateForm from "@/components/DonateForm";
 
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Donate · VIS Evolutions",
+  title: "Donate | Support VIS Evolutions STEM Racing",
+  description:
+    "Support VIS Evolutions, a student F1 in Schools STEM racing team. Every donation funds materials, manufacturing and getting our Formula 1 car to the start line.",
+  alternates: { canonical: "/donate" },
+  openGraph: {
+    title: "Donate | Support VIS Evolutions STEM Racing",
+    description: "Help fund VIS Evolutions' F1 in Schools STEM racing car.",
+    url: "/donate",
+    images: [SITE.ogImage],
+  },
 };
 
 const fundCard = "background:#fff;border:1px solid #ECEAE4;border-radius:12px;padding:26px";
